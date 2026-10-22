@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Our Memories 💕</title>
+
+    <!-- Cute Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+
+            background: linear-gradient(
+                135deg,
+                #ffe1ed,
+                #f7dcff,
+                #e3ddff
+            );
+
+            font-family: 'Quicksand', sans-serif;
+
+            padding: 60px 20px;
+
+            text-align: center;
+
+            overflow-x: hidden;
+        }
+
+
+        /* TITLE */
+
+        .title {
+            font-family: 'Pacifico', cursive;
+
+            font-size: 48px;
+
+            color: #ff4f87;
+
+            margin-bottom: 12px;
+
+            animation: titleEnter 1s ease;
+        }
+
+
+        .subtitle {
+            font-size: 18px;
+
+            color: #777;
+
+            margin-bottom: 50px;
+
+            animation: fadeIn 1.5s ease;
+        }
+
+
+        /* GALLERY */
+
+        .gallery {
+            max-width: 1000px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 35px;
+
+            align-items: start;
+        }
+
+
+        /* MEMORY CARD */
+
+        .memory-card {
+            background: white;
+
+            padding: 14px 14px 25px;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 12px 30px rgba(120, 70, 130, 0.18);
+
+            position: relative;
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+
+            animation: cardAppear 1s ease backwards;
+        }
+
+
+        .memory-card:nth-child(1) {
+            animation-delay: 0.2s;
+            transform: rotate(-2deg);
+        }
+
+
+        .memory-card:nth-child(2) {
+            animation-delay: 0.5s;
+            transform: rotate(2deg);
+        }
+
+
+        .memory-card:nth-child(3) {
+            animation-delay: 0.8s;
+            transform: rotate(-1deg);
+        }
+
+
+        .memory-card:hover {
+            transform:
+                rotate(0deg)
+                translateY(-10px)
+                scale(1.03);
+
+            box-shadow:
+                0 18px 40px
+                rgba(255, 79, 135, 0.25);
+        }
+
+
+        /* PHOTOS */
+
+        .memory-card img {
+            width: 100%;
+
+            height: 320px;
+
+            object-fit: cover;
+
+            object-position: center;
+
+            border-radius: 14px;
+
+            display: block;
+        }
+
+
+        /* CAPTIONS */
+
+        .caption {
+            margin-top: 18px;
+
+            font-family: 'Pacifico', cursive;
+
+            font-size: 20px;
+
+            color: #ff6598;
+        }
+
+
+        /* BOTTOM MESSAGE */
+
+        .bottom-message {
+            margin-top: 55px;
+
+            color: #666;
+
+            font-size: 18px;
+
+            line-height: 1.8;
+        }
+
+
+        /* NEXT BUTTON */
+
+        .next-btn {
+            margin-top: 25px;
+
+            border: none;
+
+            padding: 16px 35px;
+
+            border-radius: 30px;
+
+            background: linear-gradient(
+                135deg,
+                #ff5a91,
+                #ff81aa
+            );
+
+            color: white;
+
+            font-family: 'Quicksand', sans-serif;
+
+            font-size: 17px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 7px 20px
+                rgba(255, 90, 145, 0.3);
+
+            transition: 0.3s;
+        }
+
+
+        .next-btn:hover {
+            transform: scale(1.08);
+
+            background: #ff3477;
+
+            box-shadow:
+                0 10px 25px
+                rgba(255, 52, 119, 0.4);
+        }
+
+
+        /* FLOATING DECORATIONS */
+
+        .floating {
+            position: fixed;
+
+            bottom: -50px;
+
+            font-size: 25px;
+
+            pointer-events: none;
+
+            opacity: 0;
+
+            animation:
+                floatUp 8s linear infinite;
+        }
+
+
+        .f1 {
+            left: 7%;
+            animation-delay: 0s;
+        }
+
+
+        .f2 {
+            left: 20%;
+            animation-delay: 3s;
+        }
+
+
+        .f3 {
+            left: 45%;
+            animation-delay: 1s;
+        }
+
+
+        .f4 {
+            left: 68%;
+            animation-delay: 5s;
+        }
+
+
+        .f5 {
+            left: 87%;
+            animation-delay: 2s;
+        }
+
+
+        /* ANIMATIONS */
+
+        @keyframes titleEnter {
+
+            from {
+                opacity: 0;
+                transform: translateY(-25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        @keyframes fadeIn {
+
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+
+        @keyframes cardAppear {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(40px)
+                    scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+
+        @keyframes floatUp {
+
+            0% {
+                transform:
+                    translateY(0)
+                    rotate(0deg);
+
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 0.7;
+            }
+
+            80% {
+                opacity: 0.7;
+            }
+
+            100% {
+                transform:
+                    translateY(-110vh)
+                    rotate(360deg);
+
+                opacity: 0;
+            }
+        }
+
+
+        /* TABLET */
+
+        @media (max-width: 850px) {
+
+            .gallery {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            body {
+                padding:
+                    40px 18px;
+            }
+
+            .title {
+                font-size: 38px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+
+            .gallery {
+                grid-template-columns:
+                    1fr;
+
+                max-width: 330px;
+            }
+
+            .memory-card img {
+                height: 350px;
+            }
+
+            .bottom-message {
+                font-size: 16px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- FLOATING DECORATIONS -->
+
+    <div class="floating f1">💕</div>
+
+    <div class="floating f2">✨</div>
+
+    <div class="floating f3">🌸</div>
+
+    <div class="floating f4">♡</div>
+
+    <div class="floating f5">💗</div>
+
+
+
+    <!-- TITLE -->
+
+    <h1 class="title">
+        Our Little Memories 📸💕
+    </h1>
+
+
+    <p class="subtitle">
+        Some moments are simply too special to forget ✨
+    </p>
+
+
+
+    <!-- PHOTO GALLERY -->
+
+    <div class="gallery">
+
+
+        <!-- PHOTO 1 -->
+
+        <div class="memory-card">
+
+            <img
+                src="Image/Imagephoto1.jpg"
+                alt="Memory photo 1"
+            >
+
+            <p class="caption">
+                The beginning 💕
+            </p>
+
+        </div>
+
+
+
+        <!-- PHOTO 2 -->
+
+        <div class="memory-card">
+
+            <img
+                src="Image/Imagephoto2.jpg"
+                alt="Memory photo 2"
+            >
+
+            <p class="caption">
+                One of my favourites ✨
+            </p>
+
+        </div>
+
+
+
+        <!-- PHOTO 3 -->
+
+        <div class="memory-card">
+
+            <img
+                src="Image/Imagephoto3.jpg"
+                alt="Memory photo 3"
+            >
+
+            <p class="caption">
+                More memories to come 💖
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- BOTTOM MESSAGE -->
+
+    <div class="bottom-message">
+
+        🌸 And somehow...
+
+        <br>
+
+        every memory became a little more special 🌷
+
+        <br>
+
+        But we're not 

@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>A Message for You 💌</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+
+            background: linear-gradient(
+                135deg,
+                #ffdbea,
+                #f3dcff,
+                #dedfff
+            );
+
+            font-family:
+                "Comic Sans MS",
+                "Segoe UI",
+                cursive;
+
+            padding: 40px 20px 70px;
+
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        /* MAIN CARD */
+
+        .card {
+            width: 560px;
+            max-width: 95%;
+
+            margin: 0 auto;
+
+            background:
+                rgba(255, 255, 255, 0.96);
+
+            padding: 45px 35px;
+
+            border-radius: 32px;
+
+            text-align: center;
+
+            box-shadow:
+                0 15px 45px
+                rgba(120, 70, 130, 0.20);
+
+            position: relative;
+            z-index: 10;
+
+            animation: cardEnter 1s ease;
+        }
+
+        /* ENVELOPE */
+
+        .envelope {
+            display: inline-block;
+
+            font-size: 75px;
+
+            cursor: pointer;
+
+            margin-bottom: 5px;
+
+            animation:
+                envelopeBounce 1.8s infinite;
+        }
+
+        /* HEADING */
+
+        h1 {
+            color: #ff4f87;
+
+            font-size: 40px;
+
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* INTRO */
+
+        .intro {
+            color: #666;
+
+            font-size: 17px;
+
+            line-height: 1.7;
+
+            margin-bottom: 25px;
+        }
+
+        /* BUTTONS */
+
+        button {
+            border: none;
+
+            padding: 14px 30px;
+
+            border-radius: 30px;
+
+            color: white;
+
+            font-family: inherit;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.08);
+        }
+
+        .open-btn {
+            background: linear-gradient(
+                135deg,
+                #ff5a91,
+                #ff85ad
+            );
+
+            box-shadow:
+                0 6px 18px
+                rgba(255, 90, 145, 0.30);
+        }
+
+        /* HIDDEN LETTER */
+
+        .letter {
+            display: none;
+
+            margin-top: 30px;
+
+            padding: 30px 25px;
+
+            border-radius: 22px;
+
+            background: linear-gradient(
+                135deg,
+                #fff5f9,
+                #faf5ff
+            );
+
+            color: #555;
+
+            font-size: 17px;
+
+            line-height: 1.9;
+
+            box-shadow:
+                inset 0 0 15px
+                rgba(255, 114, 160, 0.10);
+        }
+
+        .letter.show {
+            display: block;
+
+            animation:
+                letterOpen 0.8s ease;
+        }
+
+        .letter-title {
+            color: #ff5a91;
+
+            font-size: 24px;
+
+            margin-bottom: 20px;
+        }
+
+        .signature {
+            margin-top: 25px;
+
+            color: #ff5a91;
+
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* FINAL SURPRISE BUTTON */
+
+        .final-btn {
+            display: none;
+
+            margin-top: 28px;
+
+            background: linear-gradient(
+                135deg,
+                #ff5a91,
+                #c977ff
+            );
+
+            box-shadow:
+                0 7px 20px
+                rgba(255, 90, 145, 0.30);
+
+            animation:
+                buttonAppear 0.8s ease;
+        }
+
+        /* FLOATING DECORATIONS */
+
+        .heart {
+            position: fixed;
+
+            bottom: -50px;
+
+            font-size: 25px;
+
+            pointer-events: none;
+
+            z-index: 1;
+
+            opacity: 0;
+
+            animation:
+                floatHeart 7s linear infinite;
+        }
+
+        .heart1 {
+            left: 8%;
+            animation-delay: 0s;
+        }
+
+        .heart2 {
+            left: 20%;
+            animation-delay: 3s;
+        }
+
+        .heart3 {
+            left: 45%;
+            animation-delay: 1s;
+        }
+
+        .heart4 {
+            left: 70%;
+            animation-delay: 4s;
+        }
+
+        .heart5 {
+            left: 90%;
+            animation-delay: 2s;
+        }
+
+        /* ANIMATIONS */
+
+        @keyframes cardEnter {
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(40px)
+                    scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+        @keyframes envelopeBounce {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes letterOpen {
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(-15px)
+                    scale(0.96);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+        @keyframes buttonAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.7);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform:
+                    translateY(0)
+                    rotate(0deg);
+
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 0.7;
+            }
+
+            80% {
+                opacity: 0.7;
+            }
+
+            100% {
+                transform:
+                    translateY(-110vh)
+                    rotate(360deg);
+
+                opacity: 0;
+            }
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+            body {
+                padding:
+                    25px 12px
+                    60px;
+            }
+
+            .card {
+                max-width: 100%;
+
+                padding:
+                    35px 20px;
+
+                border-radius: 25px;
+            }
+
+            h1 {
+                font-size: 31px;
+            }
+
+            .envelope {
+                font-size: 60px;
+            }
+
+            .intro {
+                font-size: 15px;
+            }
+
+            .letter {
+                padding:
+                    25px 18px;
+
+                font-size: 15px;
+            }
+
+            .letter-title {
+                font-size: 21px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- FLOATING DECORATIONS -->
+
+    <div class="heart heart1">💕</div>
+    <div class="heart heart2">🌸</div>
+    <div class="heart heart3">✨</div>
+    <div class="heart heart4">💗</div>
+    <div class="heart heart5">♡</div>
+
+    <!-- MAIN CARD -->
+
+    <main class="card">
+
+        <div
+            class="envelope"
+            onclick="openLetter()"
+        >
+            💌
+        </div>
+
+        <h1>
+            One Last Thing...
+        </h1>
+
+        <p class="intro">
+            There is something I wanted to tell you 💕
+
+            <br>
+
+            So I wrote you a tiny letter...
+        </p>
+
+        <button
+            id="openButton"
+            class="open-btn"
+            type="button"
+            onclick="openLetter()"
+        >
+            Open the letter 💌
+        </button>
+
+        <!-- HIDDEN LETTER -->
+
+        <section
+            class="letter"
+            id="letter"
+        >
+            <div class="letter-title">
+                To My Favourite Human 💗
+            </div>
+
+            <p>
+                Thank you for being a part of
+                so many beautiful memories. 🌷
+
+                <br><br>
+
+                From our random conversations,
+                silly moments and little adventures...
+
+                <br><br>
+
+                Somehow, they all became memories
+                that I never want to forget. ✨
+
+                <br><br>
+
+                No matter where life takes us,
+                I hope we always have more stories
+                to laugh about and more memories
+                to make together. 💕
+
+                <br><br>
+
+                And most importantly...
+
+                <br><br>
+
+                Thank you for simply being YOU.
+                🥹💖
+            </p>
+
+            <div class="signature">
+                With lots of love 💕
+            </div>
+        </section>
+
+        <!-- OPENS GIFT.HTML -->
+
+        <button
+            id="finalButton"
+            class="final-btn"
+            type="button"
+            onclick="openGiftPage()"
+        >
+            Okay, one final surprise 🎁
+        </button>
+
+    </main>
+
+    <script>
+        function openLetter() {
+            const letter =
+                document.getElementById("letter");
+
+            const openButton =
+                document.getElementById("openButton");
+
+            const finalButton =
+                document.getElementById("finalButton");
+
+            letter.classList.add("show");
+
+            openButton.style.display = "none";
+
+            finalButton.style.display =
+                "inline-block";
+
+            setTimeout(function () {
+                letter.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }, 250);
+        }
+
+        function openGiftPage() {
+            window.location.href = "gift.html";
+        }
+    </script>
+
+</body>
+
+</html>
